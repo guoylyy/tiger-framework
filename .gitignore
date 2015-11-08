@@ -1,0 +1,59 @@
+*~
+.#*
+dependency-reduced-pom.xml
+.DS_Store
+data/
+tmp/
+*.sw[op]
+classes/
+.new-relic/
+test.log
+logs/
+work/
+.bower-*
+
+# Eclipse
+# > the following should be created by `./gradlew eclipse`
+.classpath
+.project
+# > ignore all eclipse settings by default
+.settings
+# > except the following, primarily for formatting purposes
+!.settings/org.eclipse.jdt.core.prefs
+!.settings/org.eclipse.jdt.ui.prefs
+!.settings/org.eclipse.wst.html.core.prefs
+# > other misc eclipse artifacts
+.springBeans
+bin
+atlassian-ide-plugin.xml
+rebel.xml
+
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+out
+
+# Gradle
+.gradle
+gradle
+build
+/build
+
+mysql.properties
+gradle.properties
+application.properties
+
+# Structure101
+tiger.java.hsp
+.DS_Store
+*.eml
+*.userlibraries
+
+lib/
+plugins/
+
+# war
+*.war
+
