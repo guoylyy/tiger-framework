@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE"
+    }
+}
+
+apply plugin: "io.spring.dependency-management"
+
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:1.1.2.RELEASE'
+    }
+}
+
+dependencies {
+    compile project(':tiger-core')
+    compile project(':tiger-common-data')
+    compile project(':tiger-common-util')
+
+    compile 'org.springframework:spring-context'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+}
