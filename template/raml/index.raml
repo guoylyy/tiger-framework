@@ -1,0 +1,28 @@
+#%RAML 0.8
+title: fuckcode
+baseUri: http://baserurl:8080/
+version: v0.1.1
+protocols: [ HTTP, HTTPS ]
+
+traits:
+  - secured:
+      headers:
+        X-Auth-Token:
+          description: 当前用户token，用于验证权限,从登录返回的header中获取
+          type: string
+          required: true
+          example: "551fea47e4b02dd0ab568b85"
+  - loginSecured:
+      headers:
+        X-Username:
+          description: 用户名
+          type: string
+          required: true
+        X-Password:
+          description: 密码
+          type: string
+          required: true
+
+/account: !include src/account.raml
+
+/code: !include src/code.raml

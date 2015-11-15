@@ -18,7 +18,7 @@ public class AccountController extends BaseController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login() {
-        return new String("测试登录接口成功");
+        return new String("test success");
     }
 
 }

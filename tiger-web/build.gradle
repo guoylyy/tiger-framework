@@ -20,6 +20,7 @@ dependencyManagement {
 
 dependencies {
     compile project(':tiger-core')
+    compile project(':tiger-biz')
 
     compile ('org.springframework.boot:spring-boot-starter-web'){
         exclude module: 'org.springframework.boot:spring-boot-starter-logging'

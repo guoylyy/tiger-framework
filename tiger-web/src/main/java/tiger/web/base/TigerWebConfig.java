@@ -8,9 +8,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import tiger.biz.BizConfig;
 
 /**
  * WEB 层配置类
@@ -20,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @SpringBootApplication
 @EnableWebMvc
-@ComponentScan({"tiger.web.controller.*"})
+@ComponentScan({"tiger.web.controller.*", "tiger.biz.*", "tiger.core.*"})
 public class TigerWebConfig {
 
     @Bean
