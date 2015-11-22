@@ -5,8 +5,8 @@
 -- -----------------------------------------------------
 -- Schema tiger
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `fuckcode` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `fuckcode` ;
+CREATE SCHEMA IF NOT EXISTS `fuckcode_dev` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `fuckcode_dev` ;
 
 
 # Dump of table account

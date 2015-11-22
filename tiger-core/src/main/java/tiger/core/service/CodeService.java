@@ -6,6 +6,7 @@ package tiger.core.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tiger.common.data.dataobject.AccountDO;
 import tiger.common.data.persistence.AccountMapper;
 import tiger.core.domain.CodeDomain;
 
@@ -22,7 +23,8 @@ public class CodeService {
     public boolean persitentCode(CodeDomain codeDomain){
         System.out.println("start to persistent code");
 
-        accountMapper.read(1);
+        AccountDO accountDO = accountMapper.read(1);
+        System.out.println("查询到用户" +accountDO);
 
         return true;
     }

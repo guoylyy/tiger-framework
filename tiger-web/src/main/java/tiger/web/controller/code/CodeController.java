@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.biz.code.support.CodeManager;
+import tiger.common.util.StringUtil;
 import tiger.web.form.CreateCodeForm;
 
 /**
@@ -26,7 +27,7 @@ public class CodeController {
     @RequestMapping(value="/code", method = RequestMethod.POST)
     public String createCode(@RequestBody CreateCodeForm createCodeForm){
         //1. 检测空值
-        if(createCodeForm.getTitle().equals("")){
+        if(StringUtil.isBlank(createCodeForm.getTitle())){
            return new String("title can't be null");
         }
         //2. 创建代码对象
