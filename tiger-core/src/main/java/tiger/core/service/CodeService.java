@@ -4,7 +4,9 @@
  */
 package tiger.core.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tiger.common.data.persistence.AccountMapper;
 import tiger.core.domain.CodeDomain;
 
 /**
@@ -14,8 +16,13 @@ import tiger.core.domain.CodeDomain;
 @Service
 public class CodeService {
 
+    @Autowired
+    AccountMapper accountMapper;
+
     public boolean persitentCode(CodeDomain codeDomain){
         System.out.println("start to persistent code");
+
+        accountMapper.read(1);
 
         return true;
     }
