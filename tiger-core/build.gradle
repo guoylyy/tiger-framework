@@ -17,6 +17,9 @@ dependencyManagement {
 }
 
 dependencies {
+    compile project(':tiger-common-util')
+    compile project(':tiger-common-data')
+
 
     compile ('org.springframework.boot:spring-boot-starter-web'){
         exclude module: 'org.springframework.boot:spring-boot-starter-logging'

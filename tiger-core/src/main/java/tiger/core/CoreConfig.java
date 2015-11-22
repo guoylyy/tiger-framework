@@ -2,16 +2,16 @@
  * 404 Studio Inc.
  * Copyright (c) 2014-2015 All Rights Reserved.
  */
-package tiger.biz;
+package tiger.core;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author yiliang.gyl
- * @version $ID: v 0.1 9:53 PM yiliang.gyl Exp $
+ * @version $ID: v 0.1 1:03 PM yiliang.gyl Exp $
  */
 @SpringBootApplication
-@ComponentScan({"tiger.biz.*"})
-public class BizConfig {
+@ComponentScan({"tiger.core.*"})
+public class CoreConfig {
 }

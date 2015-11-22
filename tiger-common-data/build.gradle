@@ -39,7 +39,6 @@ dependencies {
     compile 'redis.clients:jedis:2.7.3'
     compile 'net.sf.ehcache:ehcache:2.9.0'
 
-
     compile 'mysql:mysql-connector-java:5.1.24'
     compile 'org.mybatis:mybatis:3.3.0'
     compile 'org.mybatis:mybatis-spring:1.2.2'
