@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import tiger.biz.BizConfig;
@@ -26,11 +26,13 @@ import tiger.core.CoreConfig;
 @SpringBootApplication
 @EnableWebMvc
 @Import({DataConfig.class, CoreConfig.class, BizConfig.class})
-@ComponentScan("tiger.web.controller.*")
+@ComponentScan("tiger.web.controller")
+@EnableScheduling
 public class TigerWebConfig {
 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate(new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build()));
     }
+
 }
