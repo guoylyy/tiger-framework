@@ -4,6 +4,7 @@
  */
 package tiger.web.controller;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -19,12 +20,11 @@ public class AccountControllerTests extends ControllerBaseTest{
 
     @Test
     public void testLogin() throws  Exception{
-        System.out.println("test");
         MvcResult mvcResult = mockMvc.perform(post("/login")).andExpect(status().isOk()).andReturn();
         if(mvcResult != null){
-            System.out.println(mvcResult.getResponse().getContentAsString());
+            String result = mvcResult.getResponse().getContentAsString();
+            Assert.assertEquals(result, "test success1");
         }
-
     }
 
 }

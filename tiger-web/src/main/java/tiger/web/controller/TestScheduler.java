@@ -4,8 +4,11 @@
  */
 package tiger.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import tiger.biz.code.support.CodeManager;
+import tiger.core.domain.CodeDomain;
 
 /**
  * @author yiliang.gyl
@@ -14,8 +17,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestScheduler {
 
-    @Scheduled(fixedRate = 5000)
+    @Autowired
+    CodeManager codeManager;
+
+    @Scheduled(cron = "0 0/1 20 * * ?")
     public void schedulerSmsScaner(){
-        System.out.println("开始短信扫描任务");
+        CodeDomain codeDomain = new CodeDomain();
+        codeManager.createCode(codeDomain);
     }
 }
