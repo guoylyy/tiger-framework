@@ -7,6 +7,7 @@ package tiger.web.controller.account;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import tiger.common.util.annotation.RedisCache;
 import tiger.web.controller.BaseController;
 
 /**

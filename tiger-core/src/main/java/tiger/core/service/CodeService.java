@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tiger.common.data.dataobject.AccountDO;
 import tiger.common.data.persistence.AccountMapper;
+import tiger.common.util.annotation.RedisCache;
 import tiger.core.domain.CodeDomain;
 
 /**
@@ -20,6 +21,7 @@ public class CodeService {
     @Autowired
     AccountMapper accountMapper;
 
+    @RedisCache
     public boolean persitentCode(CodeDomain codeDomain){
         System.out.println("start to persistent code");
 

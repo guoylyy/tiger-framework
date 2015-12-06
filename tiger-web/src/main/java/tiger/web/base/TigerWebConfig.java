@@ -26,7 +26,7 @@ import tiger.core.CoreConfig;
 @SpringBootApplication
 @EnableWebMvc
 @Import({DataConfig.class, CoreConfig.class, BizConfig.class})
-@ComponentScan("tiger.web.controller")
+@ComponentScan("tiger.web")
 @EnableScheduling
 public class TigerWebConfig {
 
