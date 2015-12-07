@@ -6,6 +6,7 @@ package tiger.biz.code.support;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tiger.common.util.annotation.RedisCache;
 import tiger.core.domain.CodeDomain;
 import tiger.core.service.CodeService;
 
@@ -20,6 +21,7 @@ public class CodeManager {
     @Autowired
     private CodeService codeService;
 
+    @RedisCache
     public boolean createCode(CodeDomain codeDomain){
         System.out.println("start to create code");
         //1. 判断是否权限创建
