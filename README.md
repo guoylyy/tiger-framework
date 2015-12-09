@@ -1,18 +1,23 @@
 # Tiger
 
-该项目是【信贷秘书】后台项目，主要为前端客户端提供稳定的 API 服务。
+该项目是SpringMVC后台项目，主要为前端客户端提供稳定的 API 服务,项目基于多项目依赖构建，适合于横向扩展功能。
 
 
 ## 项目环境配置
 
 开发机器上需要准备以下环境：
 
-* gradle 2.4 +
+* gradle 2.4 + （目前2.4版本应用稳定，其他版本未测试过）
 * JDK 1.8 +
 * Mysql 5.0.0+
-* IDE 可以选用 IDEA 或者 STS
+* IDE 可以选用 IDEA 或者 STS（强烈建议使用IDEA)
     * 如果选择 STS, 安装 gradle 插件
+  
+同时项目使用以下插件：
 
+* flyway （数据迁移）
+* checkstyle (代码风格审核）
+* junit + mockMVC（组件测试）
 
 导入项目有以下几步：
 
@@ -37,20 +42,4 @@
 
 ## 开发注意事项
 
-* 代码规范
-
-* 数据库插件如何使用（STS Only)
-
-## Tiger-mng
-
-* tiger-web-mng => src/main/resources/static/ 下应该有一个plugins包，存放所有的js插件资源
-  *[plugins] + [后台模板] (teambition>文库>3.后台>后台管理系统>管理系统前端)
-
-### run
-
-1. copy 上述 plugins 文件夹到 src/main/resources/static/ 下
-2. run MngMain.java
-3. 打开浏览器 [http://localhost:8080/](http://localhost:8080/)
-
-### 自动更新
-1. 使用gradle bootRun启动
+待更新
