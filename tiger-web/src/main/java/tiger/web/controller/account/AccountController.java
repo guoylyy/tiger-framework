@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.common.util.annotation.RedisCache;
+import tiger.core.result.BaseResult;
 import tiger.web.controller.BaseController;
 
 /**
@@ -18,8 +19,8 @@ import tiger.web.controller.BaseController;
 public class AccountController extends BaseController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login() {
-        return new String("test success");
+    public BaseResult<?> login() {
+        return new BaseResult(true);
     }
 
 }
