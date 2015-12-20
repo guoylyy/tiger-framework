@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE"
+    }
+}
+
+apply plugin: "io.spring.dependency-management"
+
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:1.1.2.RELEASE'
+    }
+}
+
+dependencies{
+    // jackson, for JSON and XML serialization
+    compile "com.fasterxml.jackson.core:jackson-core"
+    compile "com.fasterxml.jackson.core:jackson-annotations"
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile 'org.springframework:spring-context'
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.json:json:20141113'
+    compile 'commons-collections:commons-collections:3.2.1'
+    compile 'org.apache.httpcomponents:httpclient:4.3.4'
+    compile 'com.qiniu:qiniu-java-sdk:7.0.+'
+}
+configurations {
+    compile.exclude module: "servlet-api"
+}
+

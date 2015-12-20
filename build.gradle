@@ -3,8 +3,8 @@
  * by 'globit' at '8/29/15 9:01 AM' with Gradle 2.4
  */
 def vJavaLang = '1.8'
-def javaProjects = [ project(':tiger-common-util'),project(':tiger-common-data'),project(':tiger-core'),
-                     project(':tiger-biz'), project(':tiger-web')]
+def javaProjects = [ project(':nm-common-util'),project(':nm-common-data'),project(':nm-core'),
+                     project(':nm-biz'), project(':nm-web')]
 
 buildscript {
     ext.springRepo = 'http://maven.oschina.net/content/groups/public/'

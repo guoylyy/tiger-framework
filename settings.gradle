@@ -1,7 +1,7 @@
-rootProject.name = 'tiger-framework'
+rootProject.name = 'nevermore'
 
-include 'tiger-common-util'
-include 'tiger-common-data'
-include 'tiger-core'
-include 'tiger-biz'
-include 'tiger-web'
+include 'nm-common-util'
+include 'nm-common-data'
+include 'nm-core'
+include 'nm-biz'
+include 'nm-web'
