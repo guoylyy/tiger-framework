@@ -1,5 +1,7 @@
 package tiger.common.dal.dataobject;
 
+import tiger.common.util.annotation.CopyIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,12 +20,16 @@ public class AccountDO implements Serializable {
 
     private String mobile;
 
+    @CopyIgnore
     private String gender;
 
+    @CopyIgnore
     private String icon;
 
+    @CopyIgnore
     private String status;
 
+    @CopyIgnore
     private String extParams;
 
     public Long getId() {

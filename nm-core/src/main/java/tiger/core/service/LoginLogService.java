@@ -12,12 +12,12 @@ public interface LoginLogService {
      * @param token
      * @return
      */
-    long getAccountIdByToken(String token);
+    Long getAccountIdByToken(String token);
 
     /**
      * 创建登录记录
      * @param loginLogDomain
      */
-    void createLog(AccountLoginLogDomain loginLogDomain);
+    Boolean createLog(AccountLoginLogDomain loginLogDomain);
 
 }

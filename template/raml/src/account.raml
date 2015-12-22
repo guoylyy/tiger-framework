@@ -1,29 +1,17 @@
-description: |
-  用户账户相关接口
-post:
-  description: |
-    新建一个账户,用户注册
-  body:
-    application/json:
-      schema: |
-        {
-          "username":"test01",
-          "password":"1234"
-        }
-  responses:
-    200:
-      body:
-        application/json:
-          schema: |
-            {
-              "code":"200",
-              "message":"没问题"
-            }
+description: 账户类API
 /authentication:
   post:
     is: [loginSecured]
     description: |
-      账户登录
+      用户登录接口.<br>
+      该接口登录需要加密:<br>
+        X-Password = md5(md5(md5(X-Username)+ X-Password) + sbin.toUpperCase()); <br>
+        其中目前 sbin 为 '1234'，类型为String, 未来从后台获取
+    queryParameters:
+      expireDay:
+        type: integer
+        description: |
+          token过期天数，没有则默认为1
     responses:
       200:
         body:
@@ -31,25 +19,169 @@ post:
             schema: |
               {
                 "code": "200",
-                "message": "登录成功",
+                "message": "操作成功",
                 "data": {
-                  "id": "1",
-                  "username": "test01"
-                }
+                  "id": 10000,
+                  "account": "1334903",
+                  "gender": {
+                    "code": "MALE",
+                    "value": "男"
+                  },
+                  "name": "globit",
+                  "mobile": null,
+                  "icon": null,
+                  "createTime": 1446204979000,
+                  "updateTime": 1446204979000,
+                  "extParams": {
+                  }
+                },
+                "success": true
               }
   delete:
-    is: [secured]
     description: |
-      用户登出
+      用户登出接口,调用该接口后，用户token强制过期
     responses:
       200:
         body:
           application/json:
             schema: |
               {
-                "code":"200",
-                "message":"成功",
-                "data":{
-                  "result":true
-                }
+                "code": "200",
+                "message": "操作成功",
+                "data": true,
+                "success": true
+              }
+  get:
+    description: 验证token时候有效
+      如果则效这返回true
+      无效则返回false
+    headers:
+      X-Username:
+        type: string
+        description: |
+          账号
+      token:
+        type: string
+        description: |
+          要验证的token
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+             {
+               "code": "200",
+               "message": "操作成功",
+               "data": true,
+               "success": true
+             }
+
+/icon/{attachId}:
+  put:
+    description: 用户更新头像
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+             {
+               "code": "200",
+               "message": "操作成功",
+               "data": true,
+               "success": true
+             }
+
+/profile:
+  get:
+    description: 用户查看自己的个人信息
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  "id": 10000,
+                  "account": "1334903",
+                  "gender": {
+                    "code": "MALE",
+                    "value": "男"
+                  },
+                  "name": "globit",
+                  "mobile": null,
+                  "icon": null,
+                  "createTime": 1446204979000,
+                  "updateTime": 1446204979000,
+                  "extParams": {
+                    "神牛": "小姨子"
+                  }
+                },
+                "success": true
+              }
+  put:
+    description: 登录用户修改自己个人信息
+    body:
+        application/json:
+          schema: |
+            {
+              "name": "test011",
+              "mobile": "18362783617"
+              "gender":"MALE",
+              "icon":"1"
+            }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data":
+                {
+                  "id": 3,
+                  "createTime": 1443923200610,
+                  "updateTime": 1443923200610,
+                  "name": null,
+                  "gender": null,
+                  "icon": null,
+                  "status": null,
+                  "extParams": null,
+                  "roles": null,
+                  "mobile": null
+                },
+                "success": true
+              }
+/password:
+  put:
+    description:  |
+      用户登录后修改密码
+      提交的密码需要<br>
+        password = md5(password)<br>
+        confirmPassword = md5(confirmPassword)
+    queryParameters:
+      operation:
+        type: string
+        description: |
+          reset (重置密码)
+    body:
+      application/json:
+        schema: |
+          {
+            "oldPassword":"574464",
+            "password":"123",
+            "confirmPassword":"123"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": true,
+                "success": true
               }

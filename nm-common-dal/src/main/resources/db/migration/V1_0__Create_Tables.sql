@@ -18,7 +18,7 @@ CREATE TABLE `account` (
   `account` varchar(32) NOT NULL,
   `password` varchar(128) DEFAULT NULL COMMENT 'password',
   `name` varchar(256) DEFAULT NULL COMMENT 'name',
-  `account` varchar(16) DEFAULT NULL,
+  `mobile` varchar(16) DEFAULT NULL,
   `gender` varchar(16) DEFAULT NULL COMMENT '0 false FEMALE\n1 true  MALE',
   `icon` varchar(64) DEFAULT NULL,
   `status` varchar(16) DEFAULT NULL COMMENT 'user status',

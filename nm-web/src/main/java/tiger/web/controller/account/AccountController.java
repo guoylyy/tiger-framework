@@ -12,6 +12,7 @@ import tiger.biz.account.support.AccountManager;
 import tiger.common.util.IDCardUtil;
 import tiger.common.util.StringUtil;
 import tiger.common.util.annotation.Permission;
+import tiger.common.util.annotation.RequireValid;
 import tiger.core.base.BaseResult;
 import tiger.core.domain.AccountDomain;
 import tiger.core.domain.AccountLoginLogDomain;
@@ -108,18 +109,18 @@ public class AccountController extends BaseController {
     }
 
     /**
-     * 用户查询自己的身份信息是否有效
+     * 用户查询自己的登录token是否有效
      *
      * @param token
-     * @param mobile
+     * @param account
      * @return
      */
     @RequestMapping(value = "/authentication", method = RequestMethod.GET)
-    public BaseResult<Boolean> isValidToken(@RequestParam(APIConstants.PARAM_TOKEN) String token,
-                                            @RequestParam(APIConstants.PARAM_MOBILE) String mobile) {
-        AccountDomain accountDomain = accountService.readByAccount(mobile);
+    public BaseResult<Boolean> isValidToken(@RequestHeader(APIConstants.HEADER_TOKEN) String token,
+                                            @RequestHeader(APIConstants.HEADER_USERNAME) String account) {
+        AccountDomain accountDomain = accountService.readByAccount(account);
         long accountId = loginLogService.getAccountIdByToken(token);
-        if (null == accountDomain || accountDomain.getId().equals(accountId)) {
+        if (null == accountDomain || !accountDomain.getId().equals(accountId)) {
             return new BaseResult<>(false);
         }
         return new BaseResult<>(true);
@@ -152,20 +153,18 @@ public class AccountController extends BaseController {
      */
     @RequestMapping(value = "/profile", method = RequestMethod.PUT)
     @Permission
+    @ResponseBody
+    @RequireValid
     public BaseResult<Object> updateUserProfile(@RequestBody @Valid AccountUpdateForm form,
                                                 BindingResult bindResult) {
-        // 增加身份证校验
-        if (StringUtil.isNotEmpty(form.getIdCard())) {
-            String idCardValidMsg = IDCardUtil.valid(form.getIdCard());
-            if (StringUtil.isNotEmpty(idCardValidMsg)) {
-                return new BaseResult<>(ErrorCodeEnum.ILLEGAL_PARAMETER_VALUE, idCardValidMsg);
-            }
-        }
-
         AccountDomain domain = form.convert2Domain();
         domain.setId(this.currentAccount().getId());
-
-        return new BaseResult<>(accountService.updateAccount(domain));
+        domain = accountService.updateAccount(domain);
+        if(domain != null){
+            return new BaseResult<>(domain);
+        }else{
+            return new BaseResult<>(ErrorCodeEnum.BIZ_FAIL, "更新信息失败!");
+        }
     }
 
     /**
@@ -187,6 +186,7 @@ public class AccountController extends BaseController {
      */
     @RequestMapping(value = {"/password"}, method = RequestMethod.PUT)
     @Permission
+    @RequireValid
     public BaseResult<Boolean> changePassword(@RequestBody @Valid SimpleResetPasswordForm form,
                                               BindingResult bindingResult) {
         AccountResetPwdDomain resetPwdDomain = form.convert2Domain();

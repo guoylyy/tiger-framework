@@ -21,24 +21,24 @@ public class LoginLogServiceImpl implements LoginLogService {
 
     /**
      * 通过token获取用户数据
+     *
      * @param token
      * @return
      */
     @Override
-    public long getAccountIdByToken(String token) {
+    public Long getAccountIdByToken(String token) {
         AccountLoginLogDO accountLoginLogDO = accountLoginLogMapper.findByToken(token);
-        if(accountLoginLogDO == null){
-            return 0;
+        if (accountLoginLogDO == null) {
+            return 0l;
         }
         return accountLoginLogDO.getAccountId();
     }
 
     @Override
-    public void createLog(AccountLoginLogDomain loginLogDomain) {
+    public Boolean createLog(AccountLoginLogDomain loginLogDomain) {
         if (null == loginLogDomain) {
             throw new AppException(ErrorCodeEnum.ILLEGAL_PARAMETER_VALUE);
         }
-
-        accountLoginLogMapper.save(AccountLoginLogConvert.convertToDO(loginLogDomain));
+        return accountLoginLogMapper.save(AccountLoginLogConvert.convertToDO(loginLogDomain)) > 0;
     }
 }

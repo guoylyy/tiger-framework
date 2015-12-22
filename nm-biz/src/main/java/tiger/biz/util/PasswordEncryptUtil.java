@@ -14,8 +14,8 @@ public class PasswordEncryptUtil {
 
     public static final String SBIN = "1234"; //未来自动生成
 
-    public static String getLoginPassword(String baseMD5Password, String mobile, String sbin) {
-        String var2 = EncryptUtil.MD5(baseMD5Password + mobile);
+    public static String getLoginPassword(String baseMD5Password, String account, String sbin) {
+        String var2 = EncryptUtil.MD5(baseMD5Password + account);
         String var3 = EncryptUtil.MD5(var2 + sbin.toUpperCase());
         return var3;
     }

@@ -22,7 +22,7 @@ public class AccountAddForm extends BaseForm implements FormInterface{
 
     /**手机号码*/
     @NotNull(message = "手机号码不能为空")
-    private String mobile;
+    private String account;
     /**密码*/
     @NotNull(message = "密码不能为空")
     private String password;
@@ -38,12 +38,12 @@ public class AccountAddForm extends BaseForm implements FormInterface{
     @NotNull(message = "短信验证码不能为空")
     private String msgCode;
 
-    public String getMobile() {
-        return mobile;
+    public String getAccount() {
+        return account;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {

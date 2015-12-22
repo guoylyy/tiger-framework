@@ -93,7 +93,7 @@ public class AccountServiceImpl implements AccountService {
         }
         AccountExample example = new AccountExample();
         AccountExample.Criteria criteria = example.createCriteria();
-        criteria.andMobileEqualTo(account);
+        criteria.andAccountEqualTo(account);
 
         List<AccountDO> accountDOs = accountMapper.selectByExample(example);
 
@@ -135,9 +135,13 @@ public class AccountServiceImpl implements AccountService {
      * @see AccountService#updateAccount(AccountDomain)
      */
     @Override
-    public boolean updateAccount(AccountDomain accountDomain) {
+    public AccountDomain updateAccount(AccountDomain accountDomain) {
         AccountDO accountDO = AccountConvert.convert2DO(accountDomain);
-        return accountMapper.updateByPrimaryKeySelective(accountDO) > 0;
+        if(accountMapper.updateByPrimaryKeySelective(accountDO) > 0){
+            return read(accountDO.getId());
+        }else{
+            return null;
+        }
     }
 
     /**
@@ -174,7 +178,7 @@ public class AccountServiceImpl implements AccountService {
     public boolean resetPasswordByOldPassword(AccountResetPwdDomain resetPassDomain) {
         if (!isCorrectPassword(resetPassDomain.getAccountId(), resetPassDomain.getOldPassword())) {
             logger.error("编号为[" + resetPassDomain.getId() + "]的用户使用错误的密码[" + resetPassDomain.getOldPassword() + "]将密码更新为" + resetPassDomain.getPassword());
-            throw new AppException(ErrorCodeEnum.BIZ_FAIL);
+            throw new AppException(ErrorCodeEnum.BIZ_FAIL, "密码错误");
         }
         return resetPasswordById(resetPassDomain.getAccountId(), resetPassDomain.getPassword());
     }

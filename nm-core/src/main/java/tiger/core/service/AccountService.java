@@ -61,7 +61,7 @@ public interface AccountService {
      * @param accountDomain
      * @return
      */
-    boolean updateAccount(AccountDomain accountDomain);
+    AccountDomain updateAccount(AccountDomain accountDomain);
 
     /**
      * 更新用户头像

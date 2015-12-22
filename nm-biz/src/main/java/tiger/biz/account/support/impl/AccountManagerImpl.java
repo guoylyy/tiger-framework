@@ -56,10 +56,10 @@ public class AccountManagerImpl implements AccountManager{
     public AccountDomain signin(String account, String password) {
         AccountDomain accountDomain = accountService.readByAccount(account);
         if (accountDomain == null) {
-            throw new AppException(ErrorCodeEnum.NOT_FOUND);
+            throw new AppException(ErrorCodeEnum.NOT_FOUND, "不存在的用户！");
         }
-        if (!StringUtil.equals(account, accountDomain.getMobile())) {
-            throw new AppException(ErrorCodeEnum.BIZ_FAIL);
+        if (!StringUtil.equals(account, accountDomain.getAccount())) {
+            throw new AppException(ErrorCodeEnum.BIZ_FAIL, "用户名或密码错误！");
         }
         if (StringUtil.equals(password, PasswordEncryptUtil.getLoginPassword(accountDomain.getPassword(),
                 account, PasswordEncryptUtil.SBIN))) {
@@ -74,7 +74,7 @@ public class AccountManagerImpl implements AccountManager{
             }
             return accountDomain;
         } else {
-            throw new AppException(ErrorCodeEnum.BIZ_FAIL);
+            throw new AppException(ErrorCodeEnum.BIZ_FAIL, "用户名或密码错误！");
         }
     }
 
@@ -82,7 +82,7 @@ public class AccountManagerImpl implements AccountManager{
     public AccountDomain signinByToken(String token) {
         //根据token获取用户id
         long accountId = loginLogService.getAccountIdByToken(token);
-        //TODO:这里应该调用一个service，获取到完整的AccountDomain，而不是把Role加到accountDO里
+
         //如果用户id存在则返回用户领域模型
         AccountDomain accountDomain = accountService.read(accountId);
         if(accountDomain != null){

@@ -57,9 +57,6 @@ public class APIConstants {
     /** The constant PARAM_MOBILE */
     public static final String PARAM_MOBILE = "mobile";
 
-    /** The constant PARAM_TOKEN */
-    public static final String PARAM_TOKEN = "token";
-
     /** The constant PARAM_OPERATION */
     public static final String PARAM_OPERATION = "operation";
 

@@ -325,7 +325,7 @@
     is_del = #{isDel,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="listAttachesByIds" resultMap="AttachResultMap">
+  <select id="listAttachesByIds" resultMap="BaseResultMap">
     select *
     from attach
     where id in

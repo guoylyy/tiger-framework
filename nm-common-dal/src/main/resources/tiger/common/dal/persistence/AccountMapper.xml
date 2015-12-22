@@ -8,14 +8,14 @@
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="VARCHAR" />
     <result column="icon" property="icon" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="ext_params" property="extParams" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, account, `password`, `name`, account, gender, icon,
+    id, create_time, update_time, account, `password`, `name`, mobile, gender, icon,
     `status`, ext_params
   </sql>
   <sql id="Example_Where_Clause" >
@@ -137,8 +137,8 @@
       <if test="record.name != null" >
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.account != null" >
-        account = #{record.account,jdbcType=VARCHAR},
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null" >
         gender = #{record.gender,jdbcType=VARCHAR},
@@ -160,16 +160,16 @@
   <update id="updateByExample" parameterType="map" >
     update account
     set id = #{record.id,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      account = #{record.account,jdbcType=VARCHAR},
-      `password` = #{record.password,jdbcType=VARCHAR},
-      `name` = #{record.name,jdbcType=VARCHAR},
-      account = #{record.account,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=VARCHAR},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      `status` = #{record.status,jdbcType=VARCHAR},
-      ext_params = #{record.extParams,jdbcType=VARCHAR}
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+    account = #{record.account,jdbcType=VARCHAR},
+    `password` = #{record.password,jdbcType=VARCHAR},
+    `name` = #{record.name,jdbcType=VARCHAR},
+    mobile = #{record.mobile,jdbcType=VARCHAR},
+    gender = #{record.gender,jdbcType=VARCHAR},
+    icon = #{record.icon,jdbcType=VARCHAR},
+    `status` = #{record.status,jdbcType=VARCHAR},
+    ext_params = #{record.extParams,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,13 +186,13 @@
   </delete>
   <insert id="insert" parameterType="tiger.common.dal.dataobject.AccountDO" useGeneratedKeys="true" keyProperty="id" >
     insert into account (create_time, update_time, account,
-      `password`, `name`, account,
-      gender, icon, `status`,
-      ext_params)
+    `password`, `name`, mobile,
+    gender, icon, `status`,
+    ext_params)
     values (#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{account,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
-      #{gender,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
-      #{extParams,jdbcType=VARCHAR})
+    #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+    #{gender,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+    #{extParams,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="tiger.common.dal.dataobject.AccountDO" useGeneratedKeys="true" keyProperty="id" >
     insert into account
@@ -202,7 +202,7 @@
       account,
       `password`,
       `name`,
-      account,
+      mobile,
       gender,
       icon,
       `status`,
@@ -214,7 +214,7 @@
       #{account,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR},
-      #{account,jdbcType=VARCHAR},
+      #{mobile,jdbcType=VARCHAR},
       #{gender,jdbcType=VARCHAR},
       #{icon,jdbcType=VARCHAR},
       #{status,jdbcType=VARCHAR},
@@ -239,8 +239,8 @@
       <if test="name != null" >
         `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="account != null" >
-        account = #{account,jdbcType=VARCHAR},
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
         gender = #{gender,jdbcType=VARCHAR},
@@ -260,16 +260,15 @@
   <update id="updateByPrimaryKey" parameterType="tiger.common.dal.dataobject.AccountDO" >
     update account
     set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      account = #{account,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      `name` = #{name,jdbcType=VARCHAR},
-      account = #{account,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      icon = #{icon,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=VARCHAR},
-      ext_params = #{extParams,jdbcType=VARCHAR}
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    account = #{account,jdbcType=VARCHAR},
+    `password` = #{password,jdbcType=VARCHAR},
+    `name` = #{name,jdbcType=VARCHAR},
+    mobile = #{mobile,jdbcType=VARCHAR},
+    gender = #{gender,jdbcType=VARCHAR},
+    icon = #{icon,jdbcType=VARCHAR},
+    `status` = #{status,jdbcType=VARCHAR},
+    ext_params = #{extParams,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-
 </mapper>

@@ -6,6 +6,7 @@ package tiger.web.form.account;
 
 import tiger.common.dal.enums.GenderEnum;
 import tiger.common.util.BeanUtil;
+import tiger.common.util.StringUtil;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.domain.AccountDomain;
 import tiger.web.form.BaseForm;
@@ -24,17 +25,19 @@ public class AccountUpdateForm extends BaseForm implements FormInterface {
     @CopyIgnore
     private String gender;
 
-    /**用户名*/
-    private String userName;
+    /**用户姓名*/
+    private String name;
 
-    /**身份证号码*/
-    private String idCard;
+    /**电话号码*/
+    private String mobile;
 
-    /**业务范围*/
-    private String businessScope;
+    public String getMobile() {
+        return mobile;
+    }
 
-    /**地址*/
-    private String address;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getIcon() {
         return icon;
@@ -52,43 +55,21 @@ public class AccountUpdateForm extends BaseForm implements FormInterface {
         this.gender = gender;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
-    public String getBusinessScope() {
-        return businessScope;
-    }
-
-    public void setBusinessScope(String businessScope) {
-        this.businessScope = businessScope;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public AccountDomain convert2Domain() {
         AccountDomain domain = new AccountDomain();
         BeanUtil.copyPropertiesWithIgnores(this, domain);
-        domain.setGender(GenderEnum.getEnumByCode(this.gender));
+        if(StringUtil.isNotBlank(this.gender)) {
+            domain.setGender(GenderEnum.getEnumByCode(this.gender));
+        }
         return domain;
     }
 

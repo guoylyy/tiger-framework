@@ -1,7 +1,7 @@
 #%RAML 0.8
-title: fuckcode
+title: 力学云平台
 baseUri: http://baserurl:8080/
-version: v0.1.1
+version: v0.1.0
 protocols: [ HTTP, HTTPS ]
 
 traits:
@@ -11,7 +11,8 @@ traits:
           description: 当前用户token，用于验证权限,从登录返回的header中获取
           type: string
           required: true
-          example: "551fea47e4b02dd0ab568b85"
+          example: "IOC551fea47e4b02dd0ab568b85"
+
   - loginSecured:
       headers:
         X-Username:
@@ -23,6 +24,5 @@ traits:
           type: string
           required: true
 
-/account: !include src/account.raml
 
-/code: !include src/code.raml
+/account: !include src/account.raml

@@ -22,8 +22,7 @@ import tiger.core.enums.ErrorCodeEnum;
 public class FormValidateAspect {
 
     /** 切点 */
-    //TODO: 这里应该换成一个自定义的切点，因为大多数的controller不需要这个切面，影响效率
-    private final static String el = "@annotation(org.springframework.web.bind.annotation.RequestMapping)";
+    private final static String el = "@annotation(tiger.common.util.annotation.RequireValid)";
 
     @Before(el)
     public void before() {

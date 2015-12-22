@@ -27,7 +27,7 @@ public interface AccountLoginLogMapper {
      *
      * @param accountLoginLogDo the accountLoginLogDo
      */
-    void save(AccountLoginLogDO accountLoginLogDo);
+    int save(AccountLoginLogDO accountLoginLogDo);
 
     /**
      * Delete.
