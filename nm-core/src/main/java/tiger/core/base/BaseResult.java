@@ -123,18 +123,18 @@ public class BaseResult<T> implements Serializable {
     }
 
     /**
-     * Getter method for property <tt>data</tt>.
+     * Getter method for property <tt>dal</tt>.
      *
-     * @return property value of data
+     * @return property value of dal
      */
     public T getData() {
         return data;
     }
 
     /**
-     * Setter method for property <tt>data</tt>.
+     * Setter method for property <tt>dal</tt>.
      *
-     * @param data value to be assigned to property data
+     * @param data value to be assigned to property dal
      */
     public void setData(T data) {
         this.data = data;

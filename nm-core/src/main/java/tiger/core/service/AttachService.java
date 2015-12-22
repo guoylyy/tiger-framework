@@ -4,8 +4,9 @@
  */
 package tiger.core.service;
 
-import tiger.common.data.enums.AttachTypeEnum;
+import tiger.common.dal.enums.AttachTypeEnum;
 import tiger.core.domain.AttachDomain;
+import tiger.core.domain.QiniuUploadDomain;
 
 import java.util.List;
 
@@ -76,4 +77,27 @@ public interface AttachService {
      * @return
      */
     boolean isAllAttachType(List<Long> attachIds, AttachTypeEnum attachType);
+
+    /**
+     * 根据附件id获取附件,授权url
+     *
+     * @param attachId
+     * @return the qiniu attach by id
+     */
+    AttachDomain getAttachWithSignedUrlById(long attachId);
+
+    /**
+     * 获取七牛云上传授权token
+     *
+     * @return the qiniu upload token
+     */
+    QiniuUploadDomain getQiniuUploadToken(AttachDomain attachDomain, long accountId);
+
+    /**
+     * 七牛回调.
+     *
+     * @param attachDomain the attach domain
+     * @return the attach domain
+     */
+    AttachDomain qiniuCallback(AttachDomain attachDomain, String originAuthorization, String callbackBody, String callbackContentType);
 }

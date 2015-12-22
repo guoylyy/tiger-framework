@@ -27,12 +27,4 @@ public interface SmsService {
      */
     boolean sendSmsWithContent(String mobile, String content);
 
-    /**
-     *
-     * @param mobile
-     * @param smsTplId
-     * @return
-     */
-    boolean sendSms(String mobile, Long smsTplId);
-
 }

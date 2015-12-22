@@ -5,7 +5,7 @@
 package tiger.core.constants;
 
 /**
- * 
+ *
  * @author yiliang.gyl
  * @version v 0.1 Oct 3, 2015 5:23:04 PM yiliang.gyl Exp $
  */
@@ -45,12 +45,12 @@ public class SystemConstants {
 
     /** 默认坏账天数 */
     public static final String DEFAULT_BAD_LOAN_DAY = "90";
-    /** Account extParam中坏账字段  */
+    /** AccountDO extParam中坏账字段  */
     public static final String BAD_LOAN_DAY = "badLoanDay";
 
     /** 默认逾期天数 */
     public static final String DEFAULT_OVER_DUE_DAY = "30";
-    /**  Account extParam中逾期字段  */
+    /**  AccountDO extParam中逾期字段  */
     public static final String OVER_DUE_DAY = "overDueDay";
 
 }

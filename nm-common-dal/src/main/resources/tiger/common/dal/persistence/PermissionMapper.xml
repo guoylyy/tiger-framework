@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.PermissionMapper" >
+  <resultMap id="PermissionResultMap" type="tiger.common.dal.dataobject.PermissionDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="system" property="system" jdbcType="VARCHAR" />
+    <result column="operation" property="operation" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="BaseColumnList" >
+    id, name, operation, system, create_time, update_time
+  </sql>
+  <select id="findByRoleId" resultMap="PermissionResultMap">
+    select distinct
+    <include refid="BaseColumnList"/>
+    from permission p
+    left join role_permission rp
+    on p.id = rp.permission_id
+    where rp.role_id=#{roleId}
+  </select>
+
+  <select id="selectByRoleIds" resultMap="PermissionResultMap">
+    select distinct
+    <include refid="BaseColumnList"/>
+    from permission p
+    left join role_permission rp on p.id = rp.permission_id
+    where rp.role_id in
+    <foreach collection="ids" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </select>
+
+</mapper>

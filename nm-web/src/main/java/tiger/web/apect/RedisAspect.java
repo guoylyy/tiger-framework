@@ -9,6 +9,8 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
+ * Redis 缓存aop处理支持组件
+ *
  * @author yiliang.gyl
  * @version $ID: v 0.1 9:43 AM yiliang.gyl Exp $
  */
@@ -33,9 +35,15 @@ public class RedisAspect {
 
     }
 
+    /**
+     * 暂时不涉及到redis操作，目前仅用作aop连通性测试
+     * @param p
+     * @return
+     * @throws Throwable
+     */
     @Around(el)
     public Object around(ProceedingJoinPoint p) throws Throwable {
-        System.err.println("测试 aspect 成功");
+        System.out.println("测试 aspect 成功");
         return  p.proceed();
     }
 

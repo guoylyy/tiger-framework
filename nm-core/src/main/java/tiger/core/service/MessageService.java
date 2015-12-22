@@ -4,7 +4,7 @@
  */
 package tiger.core.service;
 
-import tiger.common.data.query.MessageQuery;
+import tiger.common.dal.query.MessageQuery;
 import tiger.core.base.PageResult;
 import tiger.core.domain.MessageDomain;
 

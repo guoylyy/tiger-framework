@@ -1,7 +1,7 @@
 package tiger.core.domain.convert;
 
-import tiger.common.data.dataobject.RoleDO;
-import tiger.common.data.enums.RoleEnum;
+import tiger.common.dal.dataobject.RoleDO;
+import tiger.common.dal.enums.RoleEnum;
 import tiger.core.domain.RoleDomain;
 
 import java.util.ArrayList;

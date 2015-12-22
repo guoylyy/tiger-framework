@@ -4,7 +4,7 @@
  */
 package tiger.core.service;
 
-import tiger.common.data.query.AccountQuery;
+import tiger.common.dal.query.AccountQuery;
 import tiger.core.base.PageResult;
 import tiger.core.domain.AccountDomain;
 import tiger.core.domain.AccountResetPwdDomain;
@@ -31,10 +31,10 @@ public interface AccountService {
     /**
      * 通过手机获取用户
      *
-     * @param mobile
+     * @param account
      * @return
      */
-    AccountDomain readByMobile(String mobile);
+    AccountDomain readByAccount(String account);
 
     /**
      * 删除用户登录token
@@ -45,7 +45,10 @@ public interface AccountService {
      */
     Boolean deleteLoginToken(Long accountId, String loginToken);
 
+
     /**
+     * 修改密码
+     *
      * @param accountId
      * @param newPassword
      * @return
@@ -61,7 +64,7 @@ public interface AccountService {
     boolean updateAccount(AccountDomain accountDomain);
 
     /**
-     * 更新用户头像关联
+     * 更新用户头像
      *
      * @param accountId
      * @param attachId
@@ -85,22 +88,8 @@ public interface AccountService {
      */
     PageResult<List<AccountDomain>> query(AccountQuery query);
 
-
     /**
-     * 验证手机号码是否存在
-     * @param phoneNum
-     * @return
-     */
-    boolean isMobileExist(String phoneNum);
-
-    /**
-     *
-     * @param resetPassDomain
-     * @return
-     */
-    boolean resetPasswordByMobile(AccountResetPwdDomain resetPassDomain);
-
-    /**
+     * 重置一个用户的密码
      *
      * @param resetPassDomain
      * @return
@@ -108,16 +97,10 @@ public interface AccountService {
     boolean resetPasswordByOldPassword(AccountResetPwdDomain resetPassDomain);
 
     /**
+     * 删除一个用户
      *
      * @param id
      */
     void delete(long id);
 
-    /**
-     * 根据accoutId获取帐户额外设置
-     *  现包括：逾期天数和坏账天数
-     * @param accountId
-     * @return
-     */
-    HashMap<String, String> getExtParam(Long accountId);
 }

@@ -1,7 +1,7 @@
 rootProject.name = 'nevermore'
 
 include 'nm-common-util'
-include 'nm-common-data'
+include 'nm-common-dal'
 include 'nm-core'
 include 'nm-biz'
 include 'nm-web'

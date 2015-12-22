@@ -4,7 +4,7 @@
  */
 package tiger.core.domain;
 
-import tiger.common.data.enums.SystemParamTypeEnum;
+import tiger.common.dal.enums.SystemParamTypeEnum;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.base.BaseDomain;
 

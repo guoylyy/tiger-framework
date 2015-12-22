@@ -16,7 +16,7 @@ public class AccountSignUpDomain extends BaseDomain {
     private static final long serialVersionUID = 934821214131782794L;
 
     /**手机号码*/
-    private String mobile;
+    private String account;
 
     /**密码*/
     private String password;
@@ -27,12 +27,12 @@ public class AccountSignUpDomain extends BaseDomain {
     /**邀请码，可以不填*/
     private String invitationCode;
 
-    public String getMobile() {
-        return mobile;
+    public String getAccount() {
+        return account;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {

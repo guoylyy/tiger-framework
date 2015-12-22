@@ -1,6 +1,6 @@
 package tiger.core.domain.convert;
 
-import tiger.common.data.dataobject.AccountLoginLogDO;
+import tiger.common.dal.dataobject.AccountLoginLogDO;
 import tiger.common.util.BeanUtil;
 import tiger.core.domain.AccountLoginLogDomain;
 

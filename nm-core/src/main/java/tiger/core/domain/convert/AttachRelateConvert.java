@@ -5,8 +5,8 @@
 package tiger.core.domain.convert;
 
 import org.springframework.util.CollectionUtils;
-import tiger.common.data.dataobject.AttachRelateDO;
-import tiger.common.data.enums.AttachBizTypeEnum;
+import tiger.common.dal.dataobject.AttachRelateDO;
+import tiger.common.dal.enums.AttachBizTypeEnum;
 import tiger.common.util.BeanUtil;
 import tiger.core.domain.AttachRelateDomain;
 

@@ -1,6 +1,6 @@
 package tiger.core.domain;
 
-import tiger.common.data.enums.RoleEnum;
+import tiger.common.dal.enums.RoleEnum;
 import tiger.core.base.BaseDomain;
 
 /**

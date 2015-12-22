@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.SystemParamsMapper" >
+    <resultMap id="SystemParamsResultMap" type="tiger.common.dal.dataobject.SystemParamsDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="param_name" property="paramName" jdbcType="VARCHAR" />
+        <result column="param_value" property="paramValue" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="is_active" property="isActive" jdbcType="TINYINT" />
+        <result column="param_type" property="paramType" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, param_name, param_value, create_time, update_time, is_active, param_type
+    </sql>
+    <sql id="Example_Where_Clause" >
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause" >
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <select id="selectByExample" resultMap="SystemParamsResultMap" parameterType="tiger.common.dal.dataobject.example.SystemParamsExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from system_params
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExampleAndPage" resultMap="SystemParamsResultMap" parameterType="tiger.common.dal.dataobject.example.SystemParamsExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from system_params
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <delete id="deleteByExample" parameterType="tiger.common.dal.dataobject.example.SystemParamsExample" >
+        delete from system_params
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <select id="countByExample" parameterType="tiger.common.dal.dataobject.example.SystemParamsExample" resultType="java.lang.Integer" >
+        select count(*) from system_params
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" >
+        update system_params
+        <set >
+            <if test="record.id != null" >
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.paramName != null" >
+                param_name = #{record.paramName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.paramValue != null" >
+                param_value = #{record.paramValue,jdbcType=VARCHAR},
+            </if>
+            update_time = CURRENT_TIMESTAMP,
+            <if test="record.isActive != null" >
+                is_active = #{record.isActive,jdbcType=TINYINT},
+            </if>
+            <if test="record.paramType != null" >
+                param_type = #{record.paramType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map" >
+        update system_params
+        set id = #{record.id,jdbcType=BIGINT},
+        param_name = #{record.paramName,jdbcType=VARCHAR},
+        param_value = #{record.paramValue,jdbcType=VARCHAR},
+        update_time = CURRENT_TIMESTAMP,
+        is_active = #{record.isActive,jdbcType=TINYINT},
+        param_type = #{record.paramType,jdbcType=VARCHAR}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="SystemParamsResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from system_params
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from system_params
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="tiger.common.dal.dataobject.SystemParamsDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into system_params (param_name, param_value, create_time,
+        update_time, is_active, param_type
+        )
+        values (#{paramName,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR}, CURRENT_TIMESTAMP,
+        CURRENT_TIMESTAMP, #{isActive,jdbcType=TINYINT}, #{paramType,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="tiger.common.dal.dataobject.SystemParamsDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into system_params
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            param_name,
+            param_value,
+            create_time,
+            update_time,
+            is_active,
+            param_type,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{paramName,jdbcType=VARCHAR},
+            #{paramValue,jdbcType=VARCHAR},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+            #{isActive,jdbcType=TINYINT},
+            #{paramType,jdbcType=VARCHAR},
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="tiger.common.dal.dataobject.SystemParamsDO" >
+        update system_params
+        <set >
+            <if test="paramName != null" >
+                param_name = #{paramName,jdbcType=VARCHAR},
+            </if>
+            <if test="paramValue != null" >
+                param_value = #{paramValue,jdbcType=VARCHAR},
+            </if>
+            update_time = CURRENT_TIMESTAMP,
+            <if test="isActive != null" >
+                is_active = #{isActive,jdbcType=TINYINT},
+            </if>
+            <if test="paramType != null" >
+                param_type = #{paramType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="tiger.common.dal.dataobject.SystemParamsDO" >
+        update system_params
+        set param_name = #{paramName,jdbcType=VARCHAR},
+        param_value = #{paramValue,jdbcType=VARCHAR},
+        update_time = CURRENT_TIMESTAMP,
+        is_active = #{isActive,jdbcType=TINYINT},
+        param_type = #{paramType,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

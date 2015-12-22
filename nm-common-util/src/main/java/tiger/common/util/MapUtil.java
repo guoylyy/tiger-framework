@@ -795,10 +795,10 @@ public class MapUtil {
     }
 
     /**
-     * Creates a new HashMap using data copied from a ResourceBundle.
+     * Creates a new HashMap using dal copied from a ResourceBundle.
      *
      * @param resourceBundle  the resource bundle to convert, may not be null
-     * @return the hashmap containing the data
+     * @return the hashmap containing the dal
      * @throws NullPointerException if the bundle is null
      */
     @SuppressWarnings("unchecked")
@@ -848,7 +848,7 @@ public class MapUtil {
      * value, but the exact key which will be mapped is undefined.
      *
      * @param map  the map to invert, may not be null
-     * @return a new HashMap containing the inverted data
+     * @return a new HashMap containing the inverted dal
      * @throws NullPointerException if the map is null
      */
     @SuppressWarnings("unchecked")
@@ -869,7 +869,7 @@ public class MapUtil {
      * it is replaced by an empty string.
      * <p>
      * This could be useful if the map does not accept null values, or for
-     * receiving data from a source that may provide null or empty string
+     * receiving dal from a source that may provide null or empty string
      * which should be held in the same way in the map.
      * <p>
      * Keys are not validated.

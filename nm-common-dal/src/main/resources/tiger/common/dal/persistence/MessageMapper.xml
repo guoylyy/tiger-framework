@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.MessageMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.dataobject.MessageDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="receiver_id" property="receiverId" jdbcType="BIGINT" />
+        <result column="sender_id" property="senderId" jdbcType="BIGINT" />
+        <result column="is_read" property="isRead" jdbcType="TINYINT" />
+        <result column="is_archived" property="isArchived" jdbcType="TINYINT" />
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+        <result column="biz_id" property="bizId" jdbcType="VARCHAR" />
+        <result column="biz_type" property="bizType" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, receiver_id, sender_id, is_read, is_archived, is_deleted, title, description, content, biz_id, biz_type,
+        create_time, update_time
+    </sql>
+    <sql id="Example_Where_Clause" >
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause" >
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="tiger.common.dal.dataobject.example.MessageExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="tiger.common.dal.dataobject.example.MessageExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <delete id="deleteByExample" parameterType="tiger.common.dal.dataobject.example.MessageExample" >
+        delete from message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <select id="countByExample" parameterType="tiger.common.dal.dataobject.example.MessageExample" resultType="java.lang.Integer" >
+        select count(*) from message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" >
+        update message
+        <set >
+            <if test="record.id != null" >
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.receiverId != null" >
+                receiver_id = #{record.receiverId,jdbcType=BIGINT},
+            </if>
+            <if test="record.senderId != null" >
+                sender_id = #{record.senderId,jdbcType=BIGINT},
+            </if>
+            <if test="record.isRead != null" >
+                is_read = #{record.isRead,jdbcType=TINYINT},
+            </if>
+            <if test="record.isArchived != null" >
+                is_archived = #{record.isArchived,jdbcType=TINYINT},
+            </if>
+            <if test="record.isDeleted != null" >
+                is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+            </if>
+            <if test="record.title != null" >
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.description != null" >
+                description = #{record.description,jdbcType=VARCHAR},
+            </if>
+            <if test="record.content != null" >
+                content = #{record.content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.bizId != null" >
+                biz_id = #{record.bizId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.bizType != null" >
+                biz_type = #{record.bizType,jdbcType=VARCHAR},
+            </if>
+            update_time = CURRENT_TIMESTAMP,
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map" >
+        update message
+        set id = #{record.id,jdbcType=BIGINT},
+        receiver_id = #{record.receiverId,jdbcType=BIGINT},
+        sender_id = #{record.senderId,jdbcType=BIGINT},
+        is_read = #{record.isRead,jdbcType=TINYINT},
+        is_archived = #{record.isArchived,jdbcType=TINYINT},
+        is_deleted = #{record.isDeleted,jdbcType=TINYINT},
+        title = #{record.title,jdbcType=VARCHAR},
+        description = #{record.description,jdbcType=VARCHAR},
+        content = #{record.content,jdbcType=LONGVARCHAR},
+        biz_id = #{record.bizId,jdbcType=VARCHAR},
+        biz_type = #{record.bizType,jdbcType=VARCHAR},
+        update_time = CURRENT_TIMESTAMP
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from message
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from message
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="tiger.common.dal.dataobject.MessageDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into message (receiver_id, sender_id, is_read,
+        is_archived, is_deleted, title, description, content,
+        biz_id, biz_type, create_time,
+        update_time)
+        values (#{receiverId,jdbcType=BIGINT}, #{senderId,jdbcType=BIGINT}, #{isRead,jdbcType=TINYINT},
+        #{isArchived,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},#{content,jdbcType=LONGVARCHAR},
+        #{bizId,jdbcType=VARCHAR}, #{bizType,jdbcType=VARCHAR}, CURRENT_TIMESTAMP,
+        CURRENT_TIMESTAMP)
+    </insert>
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" >
+        insert into message (receiver_id, sender_id, is_read,
+        is_archived, is_deleted, title, description, content,
+        biz_id, biz_type, create_time,
+        update_time)
+        values
+        <foreach collection="messageDOList" item="domain" separator=",">
+            (
+            #{domain.receiverId,jdbcType=BIGINT}, #{domain.senderId,jdbcType=BIGINT},
+            #{domain.isRead,jdbcType=TINYINT}, #{domain.isArchived,jdbcType=TINYINT},
+            #{domain.isDeleted,jdbcType=TINYINT}, #{domain.title,jdbcType=VARCHAR},
+            #{domain.description,jdbcType=VARCHAR},
+            #{domain.content,jdbcType=LONGVARCHAR}, #{domain.bizId,jdbcType=VARCHAR},
+            #{domain.bizType,jdbcType=VARCHAR}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+            )
+        </foreach>
+    </insert>
+    <insert id="insertSelective" parameterType="tiger.common.dal.dataobject.MessageDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into message
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            receiver_id,
+            sender_id,
+            is_read,
+            is_archived,
+            is_deleted,
+            title,
+            description,
+            content,
+            biz_id,
+            biz_type,
+            create_time,
+            update_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{receiverId,jdbcType=BIGINT},
+            #{senderId,jdbcType=BIGINT},
+            #{isRead,jdbcType=TINYINT},
+            #{isArchived,jdbcType=TINYINT},
+            #{isDeleted,jdbcType=TINYINT},
+            #{title,jdbcType=VARCHAR},
+            #{description,jdbcType=VARCHAR},
+            #{content,jdbcType=LONGVARCHAR},
+            #{bizId,jdbcType=VARCHAR},
+            #{bizType,jdbcType=VARCHAR},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+        </trim>
+    </insert>
+    <insert id="batchInsertSelective" parameterType="java.util.List" useGeneratedKeys="true" >
+        insert into message
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            receiver_id,
+            sender_id,
+            is_read,
+            is_archived,
+            is_deleted,
+            title,
+            description,
+            content,
+            biz_id,
+            biz_type,
+            create_time,
+            update_time,
+        </trim>
+        VALUES
+        <foreach collection="messageDOList" item="domain" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                #{domain.receiverId,jdbcType=BIGINT},
+                #{domain.senderId,jdbcType=BIGINT},
+                #{domain.isRead,jdbcType=TINYINT},
+                #{domain.isArchived,jdbcType=TINYINT},
+                #{domain.isDeleted,jdbcType=TINYINT},
+                #{domain.title,jdbcType=VARCHAR},
+                #{domain.description,jdbcType=VARCHAR},
+                #{domain.content,jdbcType=LONGVARCHAR},
+                #{domain.bizId,jdbcType=VARCHAR},
+                #{domain.bizType,jdbcType=VARCHAR},
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+            </trim>
+        </foreach>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="tiger.common.dal.dataobject.MessageDO" >
+        update message
+        <set >
+            <if test="receiverId != null" >
+                receiver_id = #{receiverId,jdbcType=BIGINT},
+            </if>
+            <if test="senderId != null" >
+                sender_id = #{senderId,jdbcType=BIGINT},
+            </if>
+            <if test="isRead != null" >
+                is_read = #{isRead,jdbcType=TINYINT},
+            </if>
+            <if test="isArchived != null" >
+                is_archived = #{isArchived,jdbcType=TINYINT},
+            </if>
+            <if test="isDeleted != null" >
+                is_deleted = #{isDeleted,jdbcType=TINYINT},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null" >
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null" >
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="bizId != null" >
+                biz_id = #{bizId,jdbcType=VARCHAR},
+            </if>
+            <if test="bizType != null" >
+                biz_type = #{bizType,jdbcType=VARCHAR},
+            </if>
+            update_time = CURRENT_TIMESTAMP,
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="tiger.common.dal.dataobject.MessageDO" >
+        update message
+        set receiver_id = #{receiverId,jdbcType=BIGINT},
+        sender_id = #{senderId,jdbcType=BIGINT},
+        is_read = #{isRead,jdbcType=TINYINT},
+        is_archived = #{isArchived,jdbcType=TINYINT},
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+        title = #{title,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR},
+        content = #{content,jdbcType=LONGVARCHAR},
+        biz_id = #{bizId,jdbcType=VARCHAR},
+        biz_type = #{bizType,jdbcType=VARCHAR},
+        update_time = CURRENT_TIMESTAMP
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <sql id="queryMessagesCondition">
+        <where>
+            <if test="null != query.receiverId">
+                receiver_id = #{query.receiverId}
+            </if>
+            <if test="null != query.senderId">
+                AND sender_id = #{query.senderId}
+            </if>
+            <if test="null != query.isRead">
+                <choose>
+                    <when test="true == query.isRead">
+                        AND is_read = 1
+                    </when>
+                    <otherwise>
+                        AND is_read = 0
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="null != query.isArchived">
+                <!-- 设置是否归档 -->
+                <choose>
+                    <when test="true == query.isArchived">
+                        AND is_archived = 1
+                    </when>
+                    <otherwise>
+                        AND is_archived = 0
+                    </otherwise>
+                </choose>
+            </if>
+            <!-- 未删除 -->
+            AND is_deleted = 0
+            <if test="null != query.bizType">
+                AND biz_type = #{query.bizType}
+            </if>
+            <choose>
+                <when test="null != query.beginDate and null != query.endDate">
+                    AND create_time BETWEEN #{query.beginDate} AND #{query.endDate}
+                </when>
+                <when test="null != query.beginDate">
+                    AND create_time &gt;= #{query.beginDate}
+                </when>
+                <when test="null != query.endDate">
+                    AND create_time &lt;= #{query.endDate}
+                </when>
+                <otherwise>
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+    <select id="countMessages" resultType="java.lang.Integer">
+        select count(1)
+        from message
+        <include refid="queryMessagesCondition" />
+    </select>
+    <select id="queryMessages" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from message
+        <include refid="queryMessagesCondition" />
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+</mapper>

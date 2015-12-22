@@ -18,7 +18,7 @@ dependencyManagement {
 
 dependencies {
     compile project(':nm-common-util')
-    compile project(':nm-common-data')
+    compile project(':nm-common-dal')
 
 
     compile ('org.springframework.boot:spring-boot-starter-web'){

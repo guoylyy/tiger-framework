@@ -4,7 +4,7 @@
  */
 package tiger.core.domain;
 
-import tiger.common.data.enums.MessageBizTypeEnum;
+import tiger.common.dal.enums.MessageBizTypeEnum;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.base.BaseDomain;
 

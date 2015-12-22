@@ -3,7 +3,7 @@
  * by 'globit' at '8/29/15 9:01 AM' with Gradle 2.4
  */
 def vJavaLang = '1.8'
-def javaProjects = [ project(':nm-common-util'),project(':nm-common-data'),project(':nm-core'),
+def javaProjects = [ project(':nm-common-util'),project(':nm-common-dal'),project(':nm-core'),
                      project(':nm-biz'), project(':nm-web')]
 
 buildscript {

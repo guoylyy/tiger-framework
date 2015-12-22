@@ -1,7 +1,7 @@
 package tiger.core.domain.convert;
 
-import tiger.common.data.dataobject.PermissionDO;
-import tiger.common.data.enums.SystemEnum;
+import tiger.common.dal.dataobject.PermissionDO;
+import tiger.common.dal.enums.SystemEnum;
 import tiger.core.domain.PermissionDomain;
 
 import java.util.ArrayList;

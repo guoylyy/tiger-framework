@@ -8,7 +8,7 @@ import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.base.BaseDomain;
 
 /**
- * 
+ *
  * @author yiliang.gyl
  * @version v 0.1 Sep 10, 2015 8:20:06 PM yiliang.gyl Exp $
  */
@@ -19,7 +19,7 @@ public class AccountResetPwdDomain extends BaseDomain {
 
     /**手机号码*/
     @CopyIgnore
-    private String mobile;
+    private String account;
 
     /**密码*/
     private String password;
@@ -43,12 +43,12 @@ public class AccountResetPwdDomain extends BaseDomain {
         this.oldPassword = oldPassword;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getAccount() {
+        return account;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {

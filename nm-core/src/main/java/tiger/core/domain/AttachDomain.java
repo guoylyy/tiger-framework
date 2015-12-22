@@ -3,7 +3,7 @@
  */
 package tiger.core.domain;
 
-import tiger.common.data.enums.AttachTypeEnum;
+import tiger.common.dal.enums.AttachTypeEnum;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.base.BaseDomain;
 
@@ -44,7 +44,7 @@ public class AttachDomain extends BaseDomain {
     private AttachTypeEnum attachType;
 
     /**
-     * The meta data.
+     * The meta dal.
      */
     @CopyIgnore
     private Map<String, String> metaData;
@@ -122,18 +122,18 @@ public class AttachDomain extends BaseDomain {
     }
 
     /**
-     * Gets the meta data.
+     * Gets the meta dal.
      *
-     * @return the meta data
+     * @return the meta dal
      */
     public Map<String, String> getMetaData() {
         return metaData;
     }
 
     /**
-     * Sets the meta data.
+     * Sets the meta dal.
      *
-     * @param metaData the meta data
+     * @param metaData the meta dal
      */
     public void setMetaData(Map<String, String> metaData) {
         this.metaData = metaData;

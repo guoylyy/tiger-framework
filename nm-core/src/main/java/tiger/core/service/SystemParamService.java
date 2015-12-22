@@ -4,7 +4,7 @@
  */
 package tiger.core.service;
 
-import tiger.common.data.enums.SystemParamTypeEnum;
+import tiger.common.dal.enums.SystemParamTypeEnum;
 
 import java.util.Map;
 

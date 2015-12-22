@@ -4,8 +4,8 @@
  */
 package tiger.core.domain.convert;
 
-import tiger.common.data.dataobject.AccountDO;
-import tiger.common.data.enums.GenderEnum;
+import tiger.common.dal.dataobject.AccountDO;
+import tiger.common.dal.enums.GenderEnum;
 import tiger.common.util.BeanUtil;
 import tiger.common.util.JsonConverterUtil;
 import tiger.common.util.JsonUtil;

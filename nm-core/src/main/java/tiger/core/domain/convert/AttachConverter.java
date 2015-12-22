@@ -1,8 +1,8 @@
 package tiger.core.domain.convert;
 
 import org.springframework.util.CollectionUtils;
-import tiger.common.data.dataobject.AttachDO;
-import tiger.common.data.enums.AttachTypeEnum;
+import tiger.common.dal.dataobject.AttachDO;
+import tiger.common.dal.enums.AttachTypeEnum;
 import tiger.common.util.*;
 import tiger.core.domain.AttachDomain;
 

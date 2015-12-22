@@ -4,8 +4,8 @@
  */
 package tiger.core.domain.convert;
 
-import tiger.common.data.dataobject.MessageDO;
-import tiger.common.data.enums.MessageBizTypeEnum;
+import tiger.common.dal.dataobject.MessageDO;
+import tiger.common.dal.enums.MessageBizTypeEnum;
 import tiger.common.util.BeanUtil;
 import tiger.common.util.ByteUtil;
 import tiger.core.domain.MessageDomain;

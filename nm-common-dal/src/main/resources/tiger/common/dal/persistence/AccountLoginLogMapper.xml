@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiger.common.dal.persistence.AccountLoginLogMapper">
+    <cache />
+    <resultMap type="tiger.common.dal.dataobject.AccountLoginLogDO" id="AccountLoginLogResultMap">
+        <id property="id" column="id"  />
+        <result property="ip" column="ip" />
+        <result property="plat" column="plat"/>
+        <result property="token" column="token"  />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+        <result property="accountId" column="account_id" />
+    </resultMap>
+    <sql id="BaseColumnList" >
+        id, ip, plat, token, create_time, expire_time, account_id
+    </sql>
+
+    <select id="findByToken" resultMap="AccountLoginLogResultMap">
+		select <include refid="BaseColumnList" />
+		from account_login_log
+        where token = #{token} and expire_time > CURRENT_TIMESTAMP
+    </select>
+    
+    <insert id="save" parameterType="tiger.common.dal.dataobject.AccountLoginLogDO" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    	insert into account_login_log
+    	(ip, plat, token, create_time, expire_time, account_id)
+    	values (#{ip}, #{plat}, #{token}, CURRENT_TIMESTAMP, #{expireTime}, #{accountId})
+    </insert>
+
+    <update id="delete">
+        update account_login_log
+        set expire_time = CURRENT_TIMESTAMP
+        WHERE
+          account_id=#{accountId}
+          and token=#{token}
+          and id > 0
+    </update>
+
+</mapper>

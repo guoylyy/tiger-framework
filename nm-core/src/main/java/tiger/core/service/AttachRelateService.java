@@ -4,7 +4,7 @@
  */
 package tiger.core.service;
 
-import tiger.common.data.query.AttachRelateQuery;
+import tiger.common.dal.query.AttachRelateQuery;
 import tiger.core.domain.AttachDomain;
 import tiger.core.domain.AttachRelateDomain;
 
