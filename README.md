@@ -1,31 +1,56 @@
-# Nevermore
+# tiger-framework
 
-该项目是SpringMVC后台项目，主要为前端客户端提供稳定的 API 服务,项目基于多项目依赖构建，适合于横向扩展功能。
+本项目是 SpringMVC 后台项目，主要为前端客户端提供稳定的 API 服务,项目基于多项目依赖构建，适合于横向扩展功能。
 
+项目基于Java，愿景是实现一套那来就用的 Java 小企业开放框架，免去技术人员选择和搭建 Java Web 项目的烦恼。
 
 ## 项目环境配置
 
 开发机器上需要准备以下环境：
 
-* gradle 2.4 + （目前2.4版本应用稳定，其他版本未测试过）
+* gradle 2.4 +
 * JDK 1.8 +
-* Mysql 5.0.0+
-* IDE 可以选用 IDEA 或者 STS（强烈建议使用IDEA)
-    * 如果选择 STS, 安装 gradle 插件
-  
-同时项目使用以下插件：
+* Mysql 5.5.0+
+* IDEA 
 
-* flyway （数据迁移）
-* checkstyle (代码风格审核）
-* junit + mockMVC（组件测试）
 
-导入项目有以下几步：
+## 开发环境配置
 
-### 1. 导入 gradle 项目到IDE
+### 1. 导入 gradle 项目到IDEA
 
-### 2. 配置数据库 和 gralde.properties 文件
+### 2. 配置数据库 mysql.properties 和 gralde.properties 文件
+* mysql.properties // 放在项目dal目录的resource文件夹中
+
+```
+# c3p0.X
+c3p0.driverClassName=com.mysql.jdbc.Driver
+c3p0.url=jdbc:mysql://localhost:3306/nevermore_dev?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8  //改我
+c3p0.username=xxx  //改我
+c3p0.password=xxx  //改我
+c3p0.MaxPoolSize=20
+c3p0.MinPoolSize=10
+
+
+```
+
+* gradle.properties //放在项目根目录下
+
+```
+flyway.user=xx  //改我
+flyway.password=xx  //改我
+flyway.url=jdbc:mysql://localhost:3306
+flyway.schemas=nevermore_dev
+
+
+```
+
+
 
 ### 3. 新建数据库，migration 数据
+
+```
+	gradle flywayMigrate -i //项目根目录执行
+```
 
 ### 4. run APIMain.java
 
@@ -42,4 +67,15 @@
 
 ## 开发注意事项
 
-待更新
+* [代码规范](https://github.com/404Design/404-blog/blob/master/rules/java-code-style.md)
+* [用RAML表达 API 需求](http://blog.guoyiliang.com/2015/04/23/raml-init/)
+* 开放封闭原则（尽量扩展，而不是修改）
+
+
+## 计划
+
+目前计划是：
+
+* 加入基于redis的缓存机制
+* 加入基于角色权限的灵活配置策略
+
